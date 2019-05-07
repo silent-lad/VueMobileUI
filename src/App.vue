@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <user-panel></user-panel>
+    <div class="taskList">
+      <task-panel></task-panel>
+      <task-panel></task-panel>
+      <task-panel></task-panel>
+      <task-panel></task-panel>
+    </div>
+    <multi-button></multi-button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import UserPanel from "@/components/UserPanel.vue";
+import TaskPanel from "@/components/TaskPanel.vue";
+import MultiButton from "@/components/MultiButton.vue";
 
 export default {
-  name: 'app',
+  name: "app",
   components: {
-    HelloWorld
+    UserPanel,
+    TaskPanel,
+    MultiButton
   }
-}
+};
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+@import url("https://fonts.googleapis.com/css?family=Libre+Franklin");
+body {
+  font-family: "Libre Franklin", sans-serif;
+  font-weight: 600;
 }
 </style>

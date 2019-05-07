@@ -1,0 +1,39 @@
+<template>
+  <div class="task">
+    <i class="clock far fa-clock"></i>
+    <div class="taskText">
+      <p class="taskHeading">Eat your lunch</p>
+      <p class="taskDueDate">Due Fri Aug 8</p>
+    </div>
+  </div>
+</template>
+
+<script>
+export default { name: "taskpanel" };
+</script>
+
+<style>
+.task {
+  height: 10vh;
+  margin: 4%;
+  border-radius: 5px;
+  box-shadow: 2px 2px 10px rgba(20, 20, 20, 0.2);
+}
+.taskHeading {
+  font-size: 5.5vw;
+  margin: 0;
+}
+.taskDueDate {
+  font-size: 4vw;
+  color: grey;
+  margin: 3px 0;
+}
+.taskText {
+  /* margin: 5%; */
+  padding: 5% 4%;
+}
+.clock {
+  float: right;
+  padding: 6.5%;
+}
+</style>
