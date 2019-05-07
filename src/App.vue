@@ -46,5 +46,7 @@ export default {
 body {
   font-family: "Libre Franklin", sans-serif;
   font-weight: 600;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 </style>

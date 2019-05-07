@@ -1,29 +1,9 @@
-# todo_mobile
+# Vue Mobile UI
 
-## Project setup
-```
-npm install
-```
+## [Live Demo](https://vuemobileui.firebaseapp.com)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
+> Check on mobile for better judgement.
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
