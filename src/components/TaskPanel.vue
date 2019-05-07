@@ -14,13 +14,13 @@ export default { name: "taskpanel" };
 
 <style>
 .task {
-  height: 10vh;
+  /* height: 11vh; */
   margin: 4%;
   border-radius: 5px;
   box-shadow: 2px 2px 10px rgba(20, 20, 20, 0.2);
 }
 .taskHeading {
-  font-size: 5.5vw;
+  font-size: 5vw;
   margin: 0;
 }
 .taskDueDate {
@@ -35,5 +35,6 @@ export default { name: "taskpanel" };
 .clock {
   float: right;
   padding: 6.5%;
+  font-size: 3vw;
 }
 </style>

@@ -1,13 +1,21 @@
 <template>
   <div id="app">
-    <user-panel></user-panel>
-    <div class="taskList">
+    <user-panel v-if="!editing"></user-panel>
+    <div v-if="!editing" class="taskList">
       <task-panel></task-panel>
       <task-panel></task-panel>
       <task-panel></task-panel>
       <task-panel></task-panel>
     </div>
-    <multi-button></multi-button>
+    <edit-task-panel @close="editing = false" v-else></edit-task-panel>
+    <multi-button
+      :editing="editing"
+      v-touch:tap="
+        () => {
+          editing = !editing;
+        }
+      "
+    ></multi-button>
   </div>
 </template>
 
@@ -15,13 +23,20 @@
 import UserPanel from "@/components/UserPanel.vue";
 import TaskPanel from "@/components/TaskPanel.vue";
 import MultiButton from "@/components/MultiButton.vue";
+import EditTaskPanel from "@/components/EditTaskPanel.vue";
 
 export default {
   name: "app",
   components: {
     UserPanel,
     TaskPanel,
-    MultiButton
+    MultiButton,
+    EditTaskPanel
+  },
+  data() {
+    return {
+      editing: false
+    };
   }
 };
 </script>

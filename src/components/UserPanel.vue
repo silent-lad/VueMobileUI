@@ -2,9 +2,8 @@
   <div class="userPanel">
     <div class="userGreeting">
       <div class="heading">Hello SilentLad</div>
-      <div class="taskSubHeading">You have 3 tasks</div>
+      <div class="taskSubHeading">You have 4 tasks</div>
     </div>
-
     <img class="userImage" src="@/assets/self.png" alt="" />
   </div>
 </template>
@@ -17,7 +16,7 @@ export default {
 
 <style>
 .userPanel {
-  height: 12vh;
+  height: 22vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -34,9 +33,8 @@ export default {
   font-size: 8vw;
 }
 .userImage {
-  height: 8vh;
-  width: 8vh;
-  /* border: 1px solid black; */
+  height: 14vw;
+  width: 14vw;
   border-radius: 50%;
   margin: 1% 0%;
   box-shadow: 2px 2px 10px rgba(20, 20, 20, 0.2);
