@@ -1,26 +1,19 @@
 <template>
-  <draggable
-    v-model="trashZone"
-    class="dropzone trashzone"
-    :options="trashOptions"
+  <div
+    @click="
+      if (editing) {
+        $emit('close');
+      }
+    "
+    class="multiButton"
+    :class="editing ? 'ribbon' : ''"
   >
-    <div
-      @click="
-        if (editing) {
-          $emit('close');
-        }
-      "
-      class="multiButton"
-      :class="editing ? 'ribbon' : ''"
-    >
-      <i v-if="deleting" class="fas fa-trash-alt"></i>
-      <i v-else class="fas fa-plus"></i>
-    </div>
-  </draggable>
+    <i v-if="deleting" class="fas fa-trash-alt"></i>
+    <i v-else class="fas fa-plus"></i>
+  </div>
 </template>
 
 <script>
-import draggable from "vuedraggable";
 export default {
   data() {
     return {
@@ -33,13 +26,11 @@ export default {
           put: () => true,
           pull: false
         }
-      }
+      },
+      deleting: false
     };
   },
-  props: ["editing"],
-  components: {
-    draggable
-  }
+  props: ["editing"]
 };
 </script>
 
