@@ -2,14 +2,14 @@
   <div class="task">
     <i class="clock far fa-clock"></i>
     <div class="taskText">
-      <p class="taskHeading">Eat your lunch</p>
+      <p class="taskHeading">{{ task.name }}</p>
       <p class="taskDueDate">Due Fri Aug 8</p>
     </div>
   </div>
 </template>
 
 <script>
-export default { name: "taskpanel" };
+export default { name: "taskpanel", props: ["task"] };
 </script>
 
 <style>

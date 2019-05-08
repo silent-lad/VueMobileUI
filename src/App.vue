@@ -2,19 +2,20 @@
   <div id="app">
     <user-panel v-if="!editing"></user-panel>
     <div v-if="!editing" class="taskList">
-      <task-panel></task-panel>
-      <task-panel></task-panel>
-      <task-panel></task-panel>
-      <task-panel></task-panel>
+      <task-panel
+        :key="task.name"
+        v-for="task in tasks"
+        :task="task"
+      ></task-panel>
     </div>
-    <edit-task-panel @close="editing = false" v-else></edit-task-panel>
+    <edit-task-panel
+      @typed="typed"
+      @close="editing = false"
+      v-else
+    ></edit-task-panel>
     <multi-button
       :editing="editing"
-      v-touch:tap="
-        () => {
-          editing = !editing;
-        }
-      "
+      v-touch:tap="handleMultiTap"
     ></multi-button>
   </div>
 </template>
@@ -35,8 +36,23 @@ export default {
   },
   data() {
     return {
-      editing: false
+      editing: false,
+      tasks: [],
+      newTask: ""
     };
+  },
+  methods: {
+    handleMultiTap() {
+      if (this.editing) {
+        this.tasks.push({ name: this.newTask });
+        this.editing = false;
+      } else {
+        this.editing = true;
+      }
+    },
+    typed(e) {
+      this.newTask = e;
+    }
   }
 };
 </script>

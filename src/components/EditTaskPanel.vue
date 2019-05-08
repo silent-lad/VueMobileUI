@@ -15,6 +15,11 @@ dfz</textarea
 export default {
   data() {
     return { text: "" };
+  },
+  watch: {
+    text: function(newText, oldText) {
+      this.$emit("typed", this.text);
+    }
   }
 };
 </script>
@@ -31,6 +36,7 @@ export default {
   font-family: "Libre Franklin", sans-serif;
 }
 .editPanel {
+  padding: 2%;
   font-size: 8vw;
 }
 .editTask:focus {
@@ -39,6 +45,7 @@ export default {
   outline: none !important;
 }
 .editPanel > i {
+  margin-bottom: 5%;
   text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.397);
 }
 </style>
