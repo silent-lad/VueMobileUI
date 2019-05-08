@@ -23,8 +23,9 @@
       @close="editing = false"
       v-else
     ></edit-task-panel>
-    <draggable :options="trashOptions">
+    <draggable handle=".my-handle" v-model="trash" :options="trashOptions">
       <multi-button
+        @dragenter="console.log('hi')"
         :editing="editing"
         :deleting="deleting"
         v-touch:tap="handleMultiTap"
@@ -54,6 +55,7 @@ export default {
       blur: false,
       editing: false,
       tasks: [],
+      trash: [],
       newTask: "",
       deleting: false,
       origin: { x: 0, y: 0 },
@@ -125,4 +127,12 @@ body {
   color: grey;
   /* transform: scale(1.2); */
 }
+.my-handle {
+  cursor: move;
+  cursor: -webkit-grabbing;
+}
+
+/* .multiButton {
+  opacity: 0.5 !important;
+} */
 </style>

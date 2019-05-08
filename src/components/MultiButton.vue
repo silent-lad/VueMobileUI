@@ -1,15 +1,10 @@
 <template>
   <div
-    @click="
-      if (editing) {
-        $emit('close');
-      }
-    "
     class="multiButton"
     :class="[editing ? 'ribbon' : '', deleting ? 'delete' : '']"
   >
     <i v-if="deleting" class="fas fa-trash-alt"></i>
-    <i v-if="!deleting" class="fas fa-plus"></i>
+    <i v-else class="fas fa-plus"></i>
   </div>
 </template>
 
@@ -26,8 +21,7 @@ export default {
           put: () => true,
           pull: false
         }
-      },
-      deleting: false
+      }
     };
   },
   props: ["editing", "deleting"]
@@ -41,8 +35,6 @@ export default {
   right: 0;
   left: 0;
   margin: 0 auto;
-  /* left: auto; */
-  /* margin: 0 auto; */
   height: 12vh;
   width: 12vh;
   border-radius: 12vh;

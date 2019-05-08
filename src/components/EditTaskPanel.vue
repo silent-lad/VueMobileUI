@@ -5,9 +5,7 @@
       class="editTask"
       v-model="text"
       placeholder="What Would you Like to Add?"
-    >
-dfz</textarea
-    >
+    ></textarea>
   </div>
 </template>
 
