@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <user-panel :taskCount="tasks.length" v-if="!editing"></user-panel>
+
     <div v-if="!editing" class="taskList">
       <transition-group name="list" tag="p">
         <task-panel
