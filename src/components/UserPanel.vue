@@ -3,7 +3,6 @@
     <div class="userGreeting">
       <div class="heading">Hello SilentLad</div>
       <div class="taskSubHeading">You have {{ taskCount }} tasks</div>
-      <p class="taskSubHeading">Swipe Right to delete tasks</p>
     </div>
     <img class="userImage" src="@/assets/self.png" alt="" />
   </div>

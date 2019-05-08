@@ -1,27 +1,35 @@
 <template>
-  <div id="app">
+  <div id="app" :class="blur ? 'blur' : ''">
     <user-panel :taskCount="tasks.length" v-if="!editing"></user-panel>
 
     <div v-if="!editing" class="taskList">
-      <transition-group name="list" tag="p">
+      <draggable
+        v-model="tasks"
+        @start="deleting = true"
+        @end="deleting = false"
+        ghost-class="ghost"
+      >
         <task-panel
-          v-touch:swipe="swipeHandler(task)"
+          class="dropitem"
           :key="task.name"
           v-for="task in tasks"
           :task="task"
         ></task-panel>
-      </transition-group>
+        <!-- </transition-group> -->
+      </draggable>
     </div>
     <edit-task-panel
       @typed="typed"
       @close="editing = false"
       v-else
     ></edit-task-panel>
-    <multi-button
-      ref="dropzone"
-      :editing="editing"
-      v-touch:tap="handleMultiTap"
-    ></multi-button>
+    <draggable :options="trashOptions">
+      <multi-button
+        :editing="editing"
+        :deleting="deleting"
+        v-touch:tap="handleMultiTap"
+      ></multi-button>
+    </draggable>
   </div>
 </template>
 
@@ -30,6 +38,7 @@ import UserPanel from "@/components/UserPanel.vue";
 import TaskPanel from "@/components/TaskPanel.vue";
 import MultiButton from "@/components/MultiButton.vue";
 import EditTaskPanel from "@/components/EditTaskPanel.vue";
+import draggable from "vuedraggable";
 
 export default {
   name: "app",
@@ -37,14 +46,25 @@ export default {
     UserPanel,
     TaskPanel,
     MultiButton,
-    EditTaskPanel
+    EditTaskPanel,
+    draggable
   },
   data() {
     return {
+      blur: false,
       editing: false,
       tasks: [],
       newTask: "",
-      origin: { x: 0, y: 0 }
+      deleting: false,
+      origin: { x: 0, y: 0 },
+      trashOptions: {
+        group: {
+          name: "trash",
+          draggable: ".dropitem",
+          put: () => true,
+          pull: false
+        }
+      }
     };
   },
   methods: {
@@ -59,29 +79,6 @@ export default {
         this.newTask = "";
       }
     },
-    // movedHandler(e) {
-    //   this.origin.x = e.touches.pageX;
-    //   this.origin.y = e.touches.pageY;
-    // },
-    // endHandler() {},
-    // movingHandler(e) {
-    //   try {
-    //     var c = e.target;
-    //     var x = e.pageX - this.origin.x;
-    //     var y = e.pageY - this.origin.y;
-    //     // console.log(e.pageX, this.origin.x);
-
-    //     var css =
-    //       "z-index:9999;pointer-events: none; transform: scale(1.05, 1.05) rotateX(0deg) translate3d(" +
-    //       x +
-    //       "px, " +
-    //       y +
-    //       "px, 0px);";
-    //     c.style.cssText = css;
-    //   } catch (er) {
-    //     console.log(er);
-    //   }
-    // },
     swipeHandler(task) {
       return (direction, event) => {
         console.log(direction, task);
@@ -92,6 +89,15 @@ export default {
     },
     typed(e) {
       this.newTask = e;
+    }
+  },
+  watch: {
+    deleting(latest, Old) {
+      if (latest) {
+        this.blur = true;
+      } else {
+        this.blur = false;
+      }
     }
   }
 };
@@ -113,5 +119,10 @@ body {
   opacity: 0;
   background: rgb(146, 40, 40);
   transform: translateX(100px);
+}
+.ghost {
+  opacity: 0.5;
+  color: grey;
+  /* transform: scale(1.2); */
 }
 </style>

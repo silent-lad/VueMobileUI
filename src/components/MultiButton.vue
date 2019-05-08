@@ -6,10 +6,10 @@
       }
     "
     class="multiButton"
-    :class="editing ? 'ribbon' : ''"
+    :class="[editing ? 'ribbon' : '', deleting ? 'delete' : '']"
   >
     <i v-if="deleting" class="fas fa-trash-alt"></i>
-    <i v-else class="fas fa-plus"></i>
+    <i v-if="!deleting" class="fas fa-plus"></i>
   </div>
 </template>
 
@@ -30,7 +30,7 @@ export default {
       deleting: false
     };
   },
-  props: ["editing"]
+  props: ["editing", "deleting"]
 };
 </script>
 
