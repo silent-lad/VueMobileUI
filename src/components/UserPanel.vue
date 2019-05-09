@@ -2,7 +2,10 @@
   <div class="userPanel">
     <div class="userGreeting">
       <div class="heading">Hello SilentLad</div>
-      <div class="taskSubHeading">You have {{ taskCount }} tasks</div>
+      <div class="taskSubHeading">
+        You have {{ taskCount }} tasks <br />
+        Drag to delete or reorder.
+      </div>
     </div>
     <img class="userImage" src="@/assets/self.png" alt="" />
   </div>
