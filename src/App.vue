@@ -113,6 +113,10 @@ body {
   max-width: 1200px;
   margin: 0 auto;
 }
+#app {
+  width: 50vh;
+  margin: 0 auto;
+}
 .list-enter-active,
 .list-leave-active {
   transition: all 1s;

@@ -2,6 +2,7 @@
   <div class="editPanel">
     <i class="fas fa-times" @click="$emit('close')"></i>
     <textarea
+      ref="text"
       class="editTask"
       v-model="text"
       placeholder="What Would you Like to Add?"
@@ -18,6 +19,11 @@ export default {
     text: function(newText, oldText) {
       this.$emit("typed", this.text);
     }
+  },
+  mounted() {
+    setTimeout(() => {
+      this.$refs.text.focus();
+    }, 0);
   }
 };
 </script>
